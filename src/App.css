@@ -1,0 +1,33 @@
+body{
+    max-width: 100vw;
+    max-height: 100vh;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.card-display-area{
+    max-width: 600px;
+    display:flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+
+}
+img{
+    max-width:100px;
+    /* border: 1px solid blueviolet;
+    border-radius: 6px; */
+}
+.Card{
+    border: 2px solid blueviolet;
+    background-color: aqua;
+    border-radius: 6px;
+    /* width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 2px;
+    margin: 10px;
+    font-size: 1.5rem;
+    text-align: center; */
+
+    
+}
