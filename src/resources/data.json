@@ -1,0 +1,33 @@
+[{
+    "name":"Alex Scotton", 
+    "image_url":"https://techeducators.co.uk/images/team/alex-scotton.png"
+},
+{
+    "name":"James Adams", 
+    "image_url":"https://techeducators.co.uk/images/team/james-adams.png"
+},
+{
+    "name":"Tim Smith",
+    "image_url":"https://techeducators.co.uk/images/team/tim-smith.jpeg"
+},
+{
+    "name":"Jenna Buxton",
+    "image_url":"https://techeducators.co.uk/images/team/jenna-buxton.png"
+},
+{
+    "name":"Kate Yarbo",
+    "image_url":"https://techeducators.co.uk/images/team/kate-yarbo.jpeg"
+},
+{
+    "name":"Jez Johns",
+    "image_url":"https://techeducators.co.uk/images/team/jez-johns.png"
+},
+{
+    "name":"Rich Saunders",
+    "image_url":"https://techeducators.co.uk/images/team/rich-saunders.png"
+},
+{
+    "name":"Chris Seaman",
+    "image_url":"https://techeducators.co.uk/images/team/chris-seaman.png"
+}
+]
