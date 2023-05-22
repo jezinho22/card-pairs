@@ -4,30 +4,47 @@ body{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .card-display-area{
-    max-width: 600px;
-    display:flex;
-    flex-wrap: wrap;
+    max-width: 800px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:10px 10px;
     border: 1px solid black;
 
 }
 img{
-    max-width:100px;
+    max-width:150px;
     /* border: 1px solid blueviolet;
     border-radius: 6px; */
 }
-.Card{
+
+.cardFront, .cardBack{
     border: 2px solid blueviolet;
     background-color: aqua;
+    width: 200px;
+    height: 200px;
+}
+.Card{
+    /* border: 2px solid blueviolet;
+    background-color: aqua; */
     border-radius: 6px;
-    /* width: 120px;
-    height: 120px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 2px 2px 2px;
     margin: 10px;
     font-size: 1.5rem;
-    text-align: center; */
+    text-align: center; 
+}
 
-    
+.img{
+    transform: inherit
+}
+.flipped .cardFront {
+    transform: rotateY(90deg);
+    position: absolute
+}
+.Card .cardFront {
+    transform: rotateY(0deg)
+
 }
