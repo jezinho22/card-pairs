@@ -1,9 +1,10 @@
 import "../css/Card.css"
 import logo from "../resources/TECHED_LOGO.png"
 
-function Card({card, handleClick}) {
+function Card({card, handleClick, flipped}) {
   return (
     <div className="Card" key={card.id} name={card.name}>
+
       <div className = "cardFront">
         {card.pair == "image" && <img src={card.image_url} alt={card.name}></img>}
         {card.pair == "text" && <p>{card.name}</p>}
