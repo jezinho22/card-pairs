@@ -11,6 +11,7 @@ function App() {
 
 // add card to state of choice one, or if it's full then choice two
   function handleClick(card){
+    console.log(card.matched +  " matched")
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
 
   }
@@ -20,28 +21,34 @@ function App() {
 useEffect(() => {
   if (choiceOne && choiceTwo){
     if(choiceOne.name === choiceTwo.name){
-      console.log(choiceOne.name)
+      console.log("It's a match!")
       // previously is the previous state for cards
       // setCards will set to previous state withs something done to it
-      setCards(previously => {
-        return previously.map(card =>{
-          // there are two cards which match choiceOne.name
-          // this will change only those two to say matched
+      setCards(oldCards => {
+        return oldCards.map(card =>{
+          // the two cards which match choiceOne.name
+          // need to change to matched:true
           if(card.name === choiceOne.name){
-          return {...card, matched:true}
-        }})
-      })
-      tryAgain()
+            return {...card, matched:true}
+          } else {
+            return card}
+          })
+          })
+      // reset cards
+      tryAgain();
+
     } else {
-      console.log("Uh uh uh. No match there!")
+      console.log("No match")
+      // reset cards
       tryAgain()
+    
     }
   }
 }, [choiceOne, choiceTwo])
 
-
 // reset for next try
 function tryAgain(){
+  console.log(choiceOne.matched)
   setTries(tries + 1)
   setChoiceOne(null)
   setChoiceTwo(null)
@@ -57,13 +64,6 @@ function tryAgain(){
       .sort((a,b) => 0.5 - Math.random())
     setCards(shuffledCards)
     }
-  
-
-//   function renderCard(card){
-// if(card.pair == "image"){
-//   return ()
-// }
-//   }
 
   return (
     <div className="App">
@@ -74,7 +74,10 @@ Card Pairs Game
       <div className = "card-display-area">
 
     {cards.map((card)=>{
-      return <Card card={card} handleClick={handleClick} />
+      return <Card  card={card} 
+                    handleClick={handleClick} 
+                    flipped={card.matched || choiceOne === card || choiceTwo === card}
+                    />
     })}
     
       </div>
