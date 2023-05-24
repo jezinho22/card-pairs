@@ -8,7 +8,6 @@ body{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap:10px 10px;
-    border: 1px solid black;
 
 }
 img{
@@ -27,7 +26,6 @@ img{
     /* border: 2px solid blueviolet;
     background-color: aqua; */
     border-radius: 6px;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,15 +34,21 @@ img{
     font-size: 1.5rem;
     text-align: center; 
 }
+.Card div {
+    position:relative
+}
 
-.img{
-    transform: inherit
+.cardFront {
+    transform: rotateY(90deg);
+    
+
 }
 .flipped .cardFront {
-    transform: rotateY(90deg);
-    position: absolute
+    transform: rotateY(0deg);
+    position: absolute;
+    top:0; 
 }
-.Card .cardFront {
-    transform: rotateY(0deg)
-
+.cardBack {
+    position: absolute;
+    top:0;
 }

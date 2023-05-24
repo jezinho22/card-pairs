@@ -3,8 +3,7 @@ import logo from "../resources/TECHED_LOGO.png"
 
 function Card({card, handleClick, flipped}) {
   return (
-    <div className="Card" key={card.id} name={card.name}>
-      <div className={flipped ? "flipped" : ""}>
+      <div key={card.id} name={card.name} className={flipped ? "flipped" : ""}>
         
         <div className = "cardFront">
           {card.pair == "image" && <img src={card.image_url} alt={card.name}></img>}
@@ -16,7 +15,6 @@ function Card({card, handleClick, flipped}) {
         </div>
         
       </div>
-    </div>
   );
 }
 
