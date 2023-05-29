@@ -1,0 +1,116 @@
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front, .flip-card-back, .card-container{
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+  }
+  
+  .card-container{
+    position:relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 2px 2px 2px;
+    perspective: 1000px;
+    align-self: center;
+    justify-self:center;
+  }
+
+  .flip  {
+    transform: rotateY(180deg);
+    box-shadow: none;
+ }
+
+  .matched {
+    transform: rotateY(180deg);
+    animation-name: matched-pair;
+    animation-duration: 2s;
+    /* animation-timing-function: ease-in-out; */
+  }
+  .flip-card-front{
+    /* animation: myAnim 2s ease 0s 1 normal forwards; */
+    transform: rotateY(180deg);
+    background-color:  #7D5BA6;
+  }
+  .flip-card-front p{
+    width: 100%;
+    font-family: 'Martian Mono', monospace;
+    color: #89CE94;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    background-color: white;
+    padding: 1.5rem 0;
+  }
+
+  .flip-card-back {
+    background-color: rgb(59 130 246);
+  }
+
+  .flip-card-back img {
+    width: 100%;
+  }
+
+  .flip-card-front img {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  @keyframes matched-pair {
+    /* 0%{ width: 200px;
+        height: 200px;
+        }
+    50%{width: 25%;
+        height: 25%;
+        }
+    75%{width: 200px;
+        height: 200px;
+        }    
+    80%{width: 185px;
+        height: 185px;
+        }
+    90%{ width: 200px;
+        height: 200px;
+        }
+    95%{ width: 190px;
+        height: 190px;
+        }
+    97.5%{ width: 200px;
+        height: 200px;
+        }
+    99%{ width: 195px;
+        height: 195px;
+        }
+    100%{ width: 200px;
+        height: 200px;
+        }          */
+        0%{ transform: scale(1);
+            }
+        50%{transform: scale(0.75);
+                       }
+        75%{transform: scale(1);
+            }    
+        80%{transform: scale(0.83);
+            
+            }
+        90%{ transform: scale(1);
+            }
+        95%{ transform: scale(0.9);
+            
+            }
+        97.5%{ transform: scale(1);
+            }
+        99%{ transform: scale(0.95)px;
+            
+            }
+        100%{ transform: scale(1);
+            }         
+  }

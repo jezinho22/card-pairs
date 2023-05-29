@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import teamData from "./resources/data.json"
-import Card from './components/Card';
+import FlipCard from './components/FlipCard';
 
 function App() {
   const [cards, setCards] = useState([])
@@ -12,19 +12,28 @@ function App() {
 // add card to state of choice one, or if it's full then choice two
   function handleClick(card){
     console.log(card.matched +  " matched")
-    choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
-
-  }
+    if (!choiceOne){
+      setChoiceOne(card)
+      // choice two if it's not second click on choice one
+    } else if (!choiceTwo && choiceOne !== card) {
+      setChoiceTwo(card)
+    }
+    }
 
 // whenever a card is clicked, check if one and two match
 // and reset for next turn
 useEffect(() => {
+
+  // if two cards chosen
   if (choiceOne && choiceTwo){
+
+    //compare two chosen cards
     if(choiceOne.name === choiceTwo.name){
       console.log("It's a match!")
-      // previously is the previous state for cards
+
+
       // setCards will set to previous state withs something done to it
-      setCards(oldCards => {
+            setTimeout(setCards(oldCards => {
         return oldCards.map(card =>{
           // the two cards which match choiceOne.name
           // need to change to matched:true
@@ -33,18 +42,27 @@ useEffect(() => {
           } else {
             return card}
           })
-          })
-      // reset cards
+        }), 750)
+
+        // check if all pairs found
+        const b = cards.filter((card)=> card.matched !== true);
+
+
+      if (b.length === 0){
+        alert(`Hey. Good job! You did it in ${tries}!`)
+      } else {
+      // allow next try
       tryAgain();
+      }
 
     } else {
       console.log("No match")
-      // reset cards
-      tryAgain()
-    
+      // pause to show non-matching cards
+      setTimeout(tryAgain, 1500)
     }
-  }
+  }  
 }, [choiceOne, choiceTwo])
+
 
 // reset for next try
 function tryAgain(){
@@ -55,34 +73,43 @@ function tryAgain(){
 }
 
 
-  function setUpCards(){
-    const cards = teamData;
-    const shuffledCards = teamData
-      .map((obj)=> [{...obj, pair:"image", id:Math.random(), matched:false},
-                    {...obj, pair:"text", id:Math.random(), matched:false}])
-      .reduce((combined, arr)=>[...combined, ...arr])
-      .sort((a,b) => 0.5 - Math.random())
-    setCards(shuffledCards)
-    }
+function setUpCards(){
+  // const cards = teamData;
+  const shuffledCards = teamData
+  // set up two cards for each item
+    .map((obj)=> [{...obj, pair:"image", id:Math.random(), matched:false},
+                  {...obj, pair:"text", id:Math.random(), matched:false}])
+    .reduce((combined, arr)=>[...combined, ...arr])
+    .sort((a,b) => 0.5 - Math.random())
+    console.log(shuffledCards)
+  setCards(shuffledCards)
+  setTries(0)
+  setChoiceOne(null)
+  setChoiceTwo(null)
+  }
 
   return (
     <div className="App">
-      <h1>
-Card Pairs Game
-      </h1>
-      <button onClick={setUpCards}/>
+      <h1>Card Pairs Game</h1>
+      <p>You've had {tries} tries</p>
+      <button onClick={setUpCards}>Reset cards</button>
+      
       <div className = "card-display-area">
 
-    {cards.map((card)=>{
-      return <Card  card={card} 
+      {cards.map((card)=> <FlipCard  card={card} 
                     handleClick={handleClick} 
-                    flipped={card.matched || choiceOne === card || choiceTwo === card}
+                    /* necessary but messy nested ternary
+                    if matched get animation, else if choice 1 or 2 get flip, else normal*/
+                    cardClassName = {card.matched ? "card-container flip matched" : choiceOne === card || choiceTwo === card ? "card-container flip" : "card-container"}
                     />
-    })}
+      )}
     
       </div>
+      
     </div>
+  
   );
+
 }
 
 export default App;
