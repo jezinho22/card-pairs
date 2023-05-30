@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import "../css/FlipCard.css"
 import logo from "../resources/TECHED_LOGO.png"
 
