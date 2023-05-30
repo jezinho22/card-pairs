@@ -9,6 +9,7 @@ export default function Game() {
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [tries, setTries] = useState(0)
+    const [finished, setFinished] = useState(false)
   
   // add card to state of choice one, or if it's full then choice two
     function handleClick(card){
@@ -20,42 +21,49 @@ export default function Game() {
         setChoiceTwo(card)
       }
       }
-  
-  // whenever a card is clicked, check if one and two match
-  // and reset for next turn
-  useEffect(() => {
-  
-    // if two cards chosen
-    if (choiceOne && choiceTwo){
-  
-      //compare two chosen cards
-      if(choiceOne.name === choiceTwo.name){
-        console.log("It's a match!")
-  
-  
-        // setCards will set to previous state withs something done to it
-              setTimeout(setCards(oldCards => {
-          return oldCards.map(card =>{
+function updateCards(){
+    // setCards will set to previous state withs something done to it
+    setCards(oldCards => {
+        return oldCards.map(card =>{
             // the two cards which match choiceOne.name
             // need to change to matched:true
             if(card.name === choiceOne.name){
-              return {...card, matched:true}
+            return {...card, matched:true}
             } else {
-              return card}
+            return card}
             })
-          }), 750)
-  
-          // check if all pairs found
-          const b = cards.filter((card)=> card.matched !== true);
-  
-  
-        if (b.length === 0){
-          alert(`Hey. Good job! You did it in ${tries}!`)
+        })
+  }
+
+
+function checkFinished(){
+        // check if all pairs found
+        const b = cards.filter((card)=> card.matched === false); 
+        console.log("checking if finished", b.length)
+        // setstate hasn't completed so there's still two
+        // non-matching cards   
+        if (b.length === 2){
+            console.log("Not finished yet!")
+            setFinished(true)
         } else {
         // allow next try
         tryAgain();
         }
-  
+    }
+
+  // whenever a card is clicked, check if one and two match
+  // and reset for next turn
+  useEffect(() => {  
+    if (tries===0){
+        setUpCards()
+    }
+    // if two cards chosen
+    if (choiceOne && choiceTwo){  
+      //compare two chosen cards and respond
+      if(choiceOne.name === choiceTwo.name){
+        console.log("It's a match!")
+        updateCards()
+        checkFinished()  
       } else {
         console.log("No match")
         // pause to show non-matching cards
@@ -64,7 +72,6 @@ export default function Game() {
     }  
   }, [choiceOne, choiceTwo])
   
-  
   // reset for next try
   function tryAgain(){
     console.log(choiceOne.matched)
@@ -72,7 +79,6 @@ export default function Game() {
     setChoiceOne(null)
     setChoiceTwo(null)
   }
-  
   
   function setUpCards(){
     // const cards = teamData;
@@ -94,7 +100,8 @@ return (
 
     <div className = "card-display-area">
         <div className="top-row">
-            <p>You've had {tries} tries</p>
+            {/* feedback to user whether finished or not */}
+            {finished ? <p style={{color:"yellow"}}>Hey, well done! You did it in {tries} tries!</p> : <p>You've had {tries} tries</p>}
             <button onClick={setUpCards}>Reset cards</button>    
         </div>
       {cards.map((card)=> <FlipCard  
