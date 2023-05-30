@@ -50,13 +50,17 @@ function checkFinished(){
         tryAgain();
         }
     }
+useEffect(() => {
+    if (tries===0){
+        setUpCards()
+    }
+
+}, [])
 
   // whenever a card is clicked, check if one and two match
   // and reset for next turn
   useEffect(() => {  
-    if (tries===0){
-        setUpCards()
-    }
+
     // if two cards chosen
     if (choiceOne && choiceTwo){  
       //compare two chosen cards and respond
