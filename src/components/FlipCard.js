@@ -5,7 +5,7 @@ function FlipCard({card, handleClick, cardClassName}) {
 
   return (
 
-    <div className={cardClassName} key={card.key} onClick={()=>handleClick(card)} >
+    <div className={cardClassName} onClick={()=>handleClick(card)} >
    
     <div className="flip-card-front">
         {card.pair === "image" ? <img src={card.image_url} alt={`Front of ${card.name}'s card`}/> : <p>{card.name}</p>}

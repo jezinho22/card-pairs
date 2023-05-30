@@ -105,7 +105,8 @@ return (
             <button onClick={setUpCards}>Reset cards</button>    
         </div>
       {cards.map((card)=> <FlipCard  
-                  card={card} 
+                  card={card}
+                  key={card.id}
                   handleClick={handleClick} 
                   /* necessary but messy nested ternary
                   if matched get animation, else if choice 1 or 2 get flip, else normal*/
