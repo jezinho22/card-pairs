@@ -20,7 +20,8 @@ export default function Game() {
         setChoiceTwo(card)
       }
       }
-function updateCards(){
+
+    function updateCards(){
     // setCards will set to previous state withs something done to it
     setCards(oldCards => {
         return oldCards.map(card =>{
@@ -32,7 +33,7 @@ function updateCards(){
             return card}
             })
         })
-  }
+    }
 
 
 function checkFinished(){

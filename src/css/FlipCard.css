@@ -15,13 +15,13 @@
   }
   
   .card-container{
-    position:relative;
+    position: relative;
     transition: transform 0.8s;
     transform-style: preserve-3d;
     box-shadow: 2px 2px 2px;
     perspective: 1000px;
     align-self: center;
-    justify-self:center;
+    justify-self: center;
   }
 
   .flip  {
@@ -69,7 +69,7 @@
 
   @keyframes matched-pair {
 
-        0%{ transform: rotateY(180deg)  scale(1)
+        0%{ transform: rotateY(180deg) scale(1);
         }
         75%{transform: rotateY(180deg) scale(0.5);            
                        }

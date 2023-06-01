@@ -59,9 +59,11 @@ footer {
     background-color: #3b82f6;
     color:aliceblue;
     padding: 1px;
+    margin-top: 10rem;
 }
 @media screen and (max-width: 700px) {
     body {
         width: 660px;
+        height: 100%;
     }
 }
