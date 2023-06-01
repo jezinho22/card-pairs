@@ -13,7 +13,6 @@ export default function Game() {
   
   // add card to state of choice one, or if it's full then choice two
     function handleClick(card){
-      console.log(card.matched +  " matched")
       if (!choiceOne){
         setChoiceOne(card)
         // choice two if it's not second click on choice one
@@ -39,11 +38,9 @@ function updateCards(){
 function checkFinished(){
         // check if all pairs found
         const b = cards.filter((card)=> card.matched === false); 
-        console.log("checking if finished", b.length)
         // setstate hasn't completed so there's still two
         // non-matching cards   
         if (b.length === 2){
-            console.log("Not finished yet!")
             setFinished(true)
         } else {
         // allow next try
@@ -65,11 +62,9 @@ useEffect(() => {
     if (choiceOne && choiceTwo){  
       //compare two chosen cards and respond
       if(choiceOne.name === choiceTwo.name){
-        console.log("It's a match!")
         updateCards()
         checkFinished()  
       } else {
-        console.log("No match")
         // pause to show non-matching cards
         setTimeout(tryAgain, 1500)
       }
@@ -78,7 +73,6 @@ useEffect(() => {
   
   // reset for next try
   function tryAgain(){
-    console.log(choiceOne.matched)
     setTries(tries + 1)
     setChoiceOne(null)
     setChoiceTwo(null)
@@ -92,7 +86,6 @@ useEffect(() => {
                     {...obj, pair:"text", id:Math.random(), matched:false}])
       .reduce((combined, arr)=>[...combined, ...arr])
       .sort((a,b) => 0.5 - Math.random())
-      console.log(shuffledCards)
     setCards(shuffledCards)
     setTries(0)
     setChoiceOne(null)
