@@ -1,92 +1,101 @@
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-  }
-  
-  .flip-card-front, .flip-card-back, .card-container{
-    width: 150px;
-    height: 150px;
-    border-radius: 12px;
-  }
-  
-  .card-container{
-    position: relative;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    box-shadow: 2px 2px 2px;
-    perspective: 1000px;
-    align-self: center;
-    justify-self: center;
-  }
+.flip-card-front,
+.flip-card-back {
+	position: absolute;
+	border-radius: 6px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-backface-visibility: hidden; /* Safari */
+	backface-visibility: hidden;
+}
 
-  .flip  {
-    transform: rotateY(180deg);
-    box-shadow: none;
- }
+.flip-card-front,
+.flip-card-back,
+.card-container {
+	width: 150px;
+	height: 150px;
+	border-radius: 12px;
+}
 
-  .matched {
+.card-container {
+	-webkit-backface-visibility: hidden; /* Safari */
+	backface-visibility: hidden;
+	position: relative;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+	box-shadow: 2px 2px 2px;
+	perspective: 1000px;
+	align-self: center;
+	justify-self: center;
+}
 
-    animation-name: matched-pair;
-    animation-duration: 2s;
-    /* animation-timing-function: ease-in-out; */
-  }
-  .flip-card-front{
-    /* animation: myAnim 2s ease 0s 1 normal forwards; */
+.flip {
+	transform: rotateY(180deg);
+	box-shadow: none;
+}
 
-    transform: rotateY(180deg);
-    background-color:  #7D5BA6;
-  }
-  .flip-card-front p{
-    width: 100%;
-    font-family: 'Martian Mono', monospace;
-    color: #89CE94;
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    background-color: white;
-    padding: 1.5rem 0;
-  }
+.matched {
+	animation-name: matched-pair;
+	animation-duration: 2s;
+	/* animation-timing-function: ease-in-out; */
+}
+.flip-card-front {
+	/* animation: myAnim 2s ease 0s 1 normal forwards; */
 
-  .flip-card-back {
-    background-color: rgb(59 130 246);
-    /* transform: rotateY(180deg); */
+	transform: rotateY(180deg);
+	background-color: #7d5ba6;
+}
+.flip-card-front p {
+	width: 100%;
+	font-family: "Martian Mono", monospace;
+	color: #89ce94;
+	font-size: 2rem;
+	font-weight: 700;
+	text-align: center;
+	background-color: white;
+	padding: 1.5rem 0;
+}
 
-  }
+.flip-card-back {
+	background-color: rgb(59 130 246);
+	/* transform: rotateY(180deg); */
+}
 
-  .flip-card-back img {
-    width: 100%;
-  }
+.flip-card-back img {
+	width: 100%;
+}
 
-  .flip-card-front img {
-    width: 100%;
-    border-radius: 12px;
-  }
+.flip-card-front img {
+	width: 100%;
+	border-radius: 12px;
+}
 
-  @keyframes matched-pair {
-
-        0%{ transform: rotateY(180deg) scale(1);
-        }
-        75%{transform: rotateY(180deg) scale(0.5);            
-                       }
-        80%{transform: rotateY(180deg) scale(1);
-            }    
-        85%{transform: rotateY(180deg) scale(0.83);
-
-            }
-        90%{ transform: rotateY(180deg) scale(1);
-        }
-        95%{ transform: rotateY(180deg) scale(0.9);
-        }
-        97.5%{ transform: rotateY(180deg) scale(1);
-
-            }
-        99%{ transform: rotateY(180deg) scale(0.95)px;
-            }
-        100%{ transform: rotateY(180deg) scale(1);
-            }         
-  }
+@keyframes matched-pair {
+	0% {
+		transform: rotateY(180deg) scale(1);
+	}
+	75% {
+		transform: rotateY(180deg) scale(0.5);
+	}
+	80% {
+		transform: rotateY(180deg) scale(1);
+	}
+	85% {
+		transform: rotateY(180deg) scale(0.83);
+	}
+	90% {
+		transform: rotateY(180deg) scale(1);
+	}
+	95% {
+		transform: rotateY(180deg) scale(0.9);
+	}
+	97.5% {
+		transform: rotateY(180deg) scale(1);
+	}
+	99% {
+		transform: rotateY(180deg) scale(0.95) px;
+	}
+	100% {
+		transform: rotateY(180deg) scale(1);
+	}
+}
